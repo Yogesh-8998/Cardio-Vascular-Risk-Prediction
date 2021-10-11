@@ -1,65 +1,67 @@
 Cardiovascular Risk Prediction
 
+The aim of this project is to predict heart disease using data mining techniques and machine learning algorithms. This project implements 3 classification models using scikit-learn: Logistic Regression, Support Vector Classifier, and boost Model to investigate their performance on heart disease dataset.
+
 Data Discription
 
 The data set is at 10 min for about 4.5 months. The house temperature and humidity conditions were monitored with a ZigBee wireless sensor network. Each wireless node transmitted the temperature and humidity conditions around 3.3 min. Then, the wireless data was averaged for 10 minutes periods. The energy data was logged every 10 minutes with m-bus energy meters. Weather from the nearest airport weather station (Chievres Airport, Belgium) was downloaded from a public data set from Reliable Prognosis (rp5.ru) and merged together with the experimental data sets using the date and time column. Two random variables have been included in the data set for testing the regression models and to filter out non-predictive attributes (parameters). factors.
 
-Data Attributes
+Problem Statement
 
-date - time year-month-day hour:minute:second
+We have been given the cardiovascular data of nearly 3,300 people, where we have health characteristics. we want to make a machine learning model, which can learn from the pattern of these data and can predict if a person is going to have a cardiovascular risk in the next 10 years.
 
-Appliances - energy use in Wh (Dependent variable)
+Data Summary
 
-lights - energy use of light fixtures in the house in Wh (Drop this column)
+The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes. Variables Each attribute is a potential risk factor. There are both demographic, behavioral, and medical risk factors.
 
-T1 - Temperature in kitchen area, in Celsius
+Demographic
 
-RH1 - Humidity in kitchen area, in %
+Sex: male or female(Nominal)
 
-T2 - Temperature in living room area, in Celsius
+Age: Age of the patient;(Continuous - Although the recorded ages have been truncated to whole numbers, the concept of age is continuous)
 
-RH2 - Humidity in living room area, in %
+Education: categorial feature (from 1 to 4)
 
-T3 - Temperature in laundry room area
+Behavioral:
 
-RH3 - Humidity in laundry room area, in %
+Current Smoker: whether or not the patient is a current smoker (Nominal)
 
-T4 - Temperature in office room, in Celsius
+Cigs Per Day: the number of cigarettes that the person smoked on average in one day.(can be considered continuous as one can have any number of cigarettes, even half a cigarette.)
 
-RH4 - Humidity in office room, in %
+Information on medical history:
 
-T5 - Temperature in bathroom, in Celsius
+BP Meds: whether or not the patient was on blood pressure medication (Nominal)
 
-RH5 - Humidity in bathroom, in %
+Prevalent Stroke: whether or not the patient had previously had a stroke (Nominal)
 
-T6 - Temperature outside the building (north side), in Celsius
+Prevalent Hyp: whether or not the patient was hypertensive (Nominal)
 
-RH6 - Humidity outside the building (north side), in %
+Diabetes: whether or not the patient had diabetes (Nominal)
 
-T7 - Temperature in ironing room, in Celsius
+Information on current medical condition:
 
-RH7 - Humidity in ironing room, in %
+Tot Chol: total cholesterol level (Continuous)
 
-T8 - Temperature in teenager room 2, in Celsius
+Sys BP: systolic blood pressure (Continuous)
 
-RH8 - Humidity in teenager room 2, in %
+Dia BP: diastolic blood pressure (Continuous) *BMI: Body Mass Index (Continuous)
 
-T9 - Temperature in parents room, in Celsius
+Heart Rate: heart rate (Continuous - In medical research, variables such as heart rate though in fact discrete, yet are considered continuous because of large number of possible values.)
 
-RH9 - Humidity in parents room, in %
+Glucose: glucose level (Continuous)
 
-T_out - Temperature outside (from Chievres weather station), in Celsius
+Target variable to predict:
 
-Pressure - (from Chievres weather station), in mm Hg RHout
+10-year risk of coronary heart disease (CHD) - (binary: “1”, means “Yes”, “0” means “No”)
 
-Humidity - outside (from Chievres weather station), in %
+Summary
 
-Wind speed - (from Chievres weather station), in m/s
+As the first step, we understand the data & perform some cleaning on the null values, and checking the data types and EDA on data.
 
-Visibility - (from Chievres weather station), in km
+After EDA We divided our project into different model building and preprocessing before model.
 
-Tdewpoint - (from Chievres weather station), Â°C
+As so we have a high imbalance data set, we used different techniques to balance the data like SMOTE and assign class weights.
 
-rv1 - Random variable 1, nondimensional
+We tried different models and evaluated their performance scores. Models Built: Logistic Regression, SVM, XGBoost
 
-rv2 - Random variable 2, nondimensional
+Based on our targeted evaluation metric - recall, we chose SVM as the suggested model
